@@ -4,7 +4,7 @@
   <div class="col-8 offset-2">
 
   <h3>Edit your Listing</h3>
-  <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
+  <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation">
 
     <div class="mb-3">
       <label for="title" class="form-label">Title</label>
@@ -13,14 +13,19 @@
       value="<%= listing.title %>" 
       type="text" 
       class="form-control"
+      required
       />
+      <div class="valid-feedback">Title looks good!</div>
     </div>
 
     <div class="mb-3 ">
       <label for="description" class="form-label">Description</label>
-    <textarea name="listing[description]" class="form-control">
+    <textarea 
+    name="listing[description]" 
+    class="form-control" required >
       <%= listing.description %>
     </textarea>
+    <div class="invalid-feedback">Description is required.</div>
     </div>
     
     <div class="mb-3">
@@ -30,7 +35,9 @@
       value="<%= listing.listingImage %>"
       type="text"
       class="form-control"
+      required
     />
+    <div class="invalid-feedback">Image is required.</div>
     </div>
     
 
@@ -42,7 +49,9 @@
     value="<%= listing.price %>" 
     type="number" 
     class="form-control"
+    required
     />
+    <div class="invalid-feedback">Price is required.</div>
   </div>
 
   <div class="mb-3 col-md-8">
@@ -52,7 +61,9 @@
     value="<%= listing.country %>" 
     type="text" 
     class="form-control"
+    required
     />
+    <div class="invalid-feedback">Country is required.</div>
     </div>
   </div>
 
@@ -64,7 +75,9 @@
       value="<%= listing.location %>"
       type="text"
       class="form-control"
+      required
     />
+    <div class="invalid-feedback">Location is required.</div>
   </div>
 
     <button class="btn btn-dark edit-btn mb-3">Edit</button>
@@ -72,3 +85,5 @@
 
 </div>
 </div>
+
+<script src="/JavaScript/script.js"></script>
