@@ -80,6 +80,9 @@ app.get("/listings/:id/edit", wrapAsync (async (req, res) => {
 
 //Update Route
 app.put("/listings/:id", wrapAsync (async (req, res) => {
+  if(!req.body.listing){
+    throw new ExpressError("Invalid input", 400);
+  }
   let { id } = req.params;
   await Listing.findByIdAndUpdate(id, { ...req.body.listing });
   res.redirect(`/listings/${id}`);
@@ -117,7 +120,8 @@ app.all("*", (req, res, next) => {
 
 app.use((err, req, res, next) => {
   let {statusCode=500, message="Something went Wrong!"} = err;
-  res.status(statusCode).send(message);
+  // res.status(statusCode).send(message);
+  res.status(statusCode).render("error.ejs", {message});
 })
 
 app.listen(8080, () => {
