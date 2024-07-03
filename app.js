@@ -61,9 +61,26 @@ app.get("/listings/:id", wrapAsync (async (req, res) => {
 //Create Route
 app.post("/listings", wrapAsync (async (req, res, next) => {
   if(!req.body.listing){
-    throw new ExpressError("Invalid input", 400);
+    throw new ExpressError("Send valid data for listing", 400);
   }
   const newListing = new Listing(req.body.listing);
+
+  if(!newListing.title){
+    throw new ExpressError("Title is missing!", 400);
+  }
+
+  if(!newListing.description) {
+    throw new ExpressError("Description is missing", 400);
+  }
+
+  if(!newListing.location){
+    throw new ExpressError("Location is missing", 400);
+  }
+
+  if(!newListing.country){
+    throw new ExpressError("Country is missing", 400);
+  }
+
   await newListing.save();
   res.redirect("/listings");
 })
