@@ -5,7 +5,7 @@
 
     <h3>Listing Details : </h3>
 </div>
-    <div class="card col-6 offset-3 show-card" style="width: 18rem;">
+    <div class="card col-6 offset-3 show-card" style="width: 30rem;">
         <img src="<%= listing.listingImage  %>" 
         class="card-img-top show-img" 
         alt="listing_image">
@@ -30,7 +30,7 @@
     </ul> -->
 
     <br>
-    <div class="btns">
+    <div class="btns mt-2">
     <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-1 offset-3 edit-btn">Edit</a>
     
     <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
