@@ -40,7 +40,7 @@ app.get("/", (req, res) => {
 
 
 // Validation for Schema (Middleware)
-const validateListing = (req, res) => {
+const validateListing = (req, res, next) => {
   let {error} = listingSchema.validate(req.body);
   if(error){
     let errMsg = error.details.map((el)=> el.message).join(",");
@@ -53,7 +53,7 @@ const validateListing = (req, res) => {
 
 
 // Validation for reviews (Middleware)
-const validateReview = (req, res) => {
+const validateReview = (req, res, next) => {
   let {error} = reviewSchema.validate(req.body);
   if(error){
     let errMsg = error.details.map((el)=> el.message).join(",");
@@ -82,7 +82,7 @@ app.get("/listings/new", (req, res) => {
 //Show Route
 app.get("/listings/:id", wrapAsync (async (req, res) => {
   let { id } = req.params;
-  const listing = await Listing.findById(id);
+  const listing = await Listing.findById(id).populate("reviews");
   res.render("listings/show.ejs", { listing });
 }));
 
