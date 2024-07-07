@@ -11,10 +11,10 @@ const listingSchema = new Schema({
   listingImage: {
     type: String,
     default:
-      "https://a0.muscache.com/im/pictures/miso/Hosting-1099611762079108733/original/4b4a9228-38a6-46fe-bb77-73e6b8af8252.png?im_w=960",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-49786285/original/49917cc0-336a-478c-9b3b-06f498c702a8.jpeg?im_w=960",
     set: (v) =>
       v === ""
-        ? "https://a0.muscache.com/im/pictures/miso/Hosting-1099611762079108733/original/4b4a9228-38a6-46fe-bb77-73e6b8af8252.png?im_w=960"
+        ? "https://a0.muscache.com/im/pictures/miso/Hosting-49786285/original/49917cc0-336a-478c-9b3b-06f498c702a8.jpeg?im_w=960"
         : v,
   },
   price: Number,
@@ -28,14 +28,12 @@ const listingSchema = new Schema({
   ],
 });
 
-
 // Delete Middleware For Reviews
 listingSchema.post("findOneAndDelete", async (listing) => {
-  if(listing){
+  if (listing) {
     await Review.deleteMany({ _id: { $in: listing.reviews } });
   }
 });
-
 
 const Listing = mongoose.model("Listing", listingSchema);
 module.exports = Listing;
