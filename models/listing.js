@@ -11,10 +11,10 @@ const listingSchema = new Schema({
   listingImage: {
     type: String,
     default:
-      "https://a0.muscache.com/im/pictures/miso/Hosting-49786285/original/49917cc0-336a-478c-9b3b-06f498c702a8.jpeg?im_w=960",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-912305060013575560/original/eb4120bb-e281-41eb-bef5-7dac96eb90f2.jpeg?im_w=1200",
     set: (v) =>
       v === ""
-        ? "https://a0.muscache.com/im/pictures/miso/Hosting-49786285/original/49917cc0-336a-478c-9b3b-06f498c702a8.jpeg?im_w=960"
+        ? "https://a0.muscache.com/im/pictures/miso/Hosting-912305060013575560/original/eb4120bb-e281-41eb-bef5-7dac96eb90f2.jpeg?im_w=1200"
         : v,
   },
   price: Number,
