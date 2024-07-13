@@ -22,6 +22,7 @@
 
     <br>
 
+    <% if(currentUser && listing.owner._id.equals(currentUser._id)) { %>
     <div class="btns">
     <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-1 offset-3 edit-btn">Edit</a>
     
@@ -29,25 +30,28 @@
         <button class="btn btn-dark offset-5 ">Delete</button>
     </form>
     </div>
+    <% } %>
 
     <div class="col-8 offset-3 mb-3">
         <hr />
+    <% if(currentUser) { %>
         <h4>Leave a Review</h4>
         <form action="/listings/<%= listing.id %>/reviews" method="POST" novalidate class="needs-validation">
             <div class="mb-3 mt-3">
-                <label for="rating" class="form-lebel">Rating</label>
+                <label for="rating" class="form-label">Rating</label>
                 <input type="range" min="1" max="5" id="rating" name="review[rating]" class="form-range">
             </div>
 
             <div class="mb-3 mt-3"> 
-                <label for="comment" class="form-lebel">Comments</label>
+                <label for="comment" class="form-label">Comments</label>
                 <textarea id="comment" name="review[comment]" rows="5" cols="30" class="form-control" required></textarea>
                 <div class="invalid-feedback">Please add some comments for review.</div>
             </div>
             <button class="btn btn-outline-dark">Submit</button>
         </form>
-
         <hr />
+        <% } %>
+
 
         <p><b>All Reviews</b></p>
         <div class="row">
