@@ -125,3 +125,11 @@ body{
     margin: 0;
     padding: 0;
 }
+
+
+/* Map */
+#map{
+    height: 350px;
+    width: 100vh;
+}
+
